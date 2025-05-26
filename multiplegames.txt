@@ -1,0 +1,12 @@
+Ruby Friedman
+Comp 332
+
+To handle multiple games running at once  I implemented my code with 
+multitple threads so that it can handle multiple games at once by assigning 
+each game to its own thread. In the serve_game() function, new client 
+connections are accepted and stored in the waiting_clients list. When two clients are 
+available, they are popped off the list and a new thread is started using 
+threading.Thread(target=handle_game, args=(p1, p2), daemon=True).start(). This 
+launches the handle_game() function in a separate thread, allowing the main server
+loop to continue accepting new clients without preventing new clients from joining. 
+As a result, many games can be run simultaneously with many clients.
